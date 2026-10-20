@@ -1,49 +1,106 @@
----
-title: Tiny Super-Resolution Demo
-emoji: 🖼️
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: 5.0.0
-app_file: app.py
-pinned: false
----
 
 # Tiny Super-Resolution Demo
 
-A beginner portfolio project built while learning practical deep learning with PyTorch.
+A beginner deep learning project exploring image reconstruction using PyTorch and Gradio.
 
-## What it does
+## Overview
 
-The app reduces an uploaded image to 16 × 16 pixels, enlarges it to 32 × 32 using bicubic interpolation, and passes it through a small convolutional neural network. The model returns a 32 × 32 output.
+This project uses a convolutional neural network trained on CIFAR-10 images to explore image super-resolution concepts.
 
-## Training setup
+The model learns to reconstruct 32 × 32 images from bicubic-upsampled, lower-resolution inputs.
 
-- Dataset: CIFAR-10
-- Target: original 32 × 32 images
-- Input construction: 32 × 32 → 16 × 16 → bicubic resize back to 32 × 32
-- Model: small residual CNN implemented in PyTorch
-- Loss: mean squared error (MSE)
-- Optimizer: AdamW
+## Features
+
+- PyTorch convolutional neural network
+- Image preprocessing with Torchvision
+- Interactive image upload interface built with Gradio
+- Training and validation workflow
+- Local web app for model inference
+
+## How It Works
+
+1. An image is converted to RGB.
+2. The image is resized to simulate a low-resolution input.
+3. The trained model predicts a reconstructed image.
+4. The app displays the model's output.
+
+## Tech Stack
+
+- Python 3.11
+- PyTorch
+- Torchvision
+- Gradio
+- Pillow
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR-USERNAME/tiny-super-resolution.git
+cd tiny-super-resolution
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+### 2. Create a virtual environment
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 4. Run the application
+
+```bash
+python app.py
+```
+
+Open the local URL printed in the terminal.
+
+## Dataset and Training
+
+The model was trained as a learning experiment using CIFAR-10, with 32 × 32 target images and bicubic resizing to simulate reduced resolution.
+
+The training workflow included a training/validation split, a convolutional neural network, an AdamW optimizer, and mean squared error loss.
 
 ## Limitations
 
-This is an educational baseline, not a production image-restoration model. It was trained on small CIFAR-10 images and always outputs 32 × 32 pixels. It is not expected to improve arbitrary high-resolution photos reliably.
+- The model was trained on small CIFAR-10 images.
+- The output is limited to 32 × 32 pixels.
+- It has not been validated for general-purpose photo enhancement.
+- Results may vary depending on the input image.
 
-## Run locally
+This is an educational prototype, not a production-ready image restoration system.
 
-1. Put `app.py`, `requirements.txt`, and your `sr_model.pth` checkpoint in the same folder.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Launch: `python app.py`
+## What I Learned
 
-## Files
+- Preparing image datasets for supervised learning
+- Building and training a CNN in PyTorch
+- Evaluating a model with validation data
+- Saving and loading trained model weights
+- Building an interactive app with Gradio
+- Managing Python dependencies and environments
+- Publishing an ML project on GitHub
 
-- `app.py`: Gradio UI and inference code
-- `requirements.txt`: Python dependencies
-- `sr_model.pth`: trained weights, copied from the training notebook output
+## Future Improvements
 
-## Next improvements
+- Train on larger, higher-resolution images
+- Compare reconstruction quality using additional metrics
+- Improve visual comparisons between input and output
+- Deploy an online interactive demo
+- Experiment with more advanced super-resolution architectures
 
-- Compare bicubic input and model output side by side.
-- Report validation loss and an image-quality metric such as PSNR.
-- Train on larger image patches before claiming general-purpose photo enhancement.
+---
+
+**Project status:** Initial working prototype.
+
+Built as part of my hands-on journey into deep learning and applied machine learning.
