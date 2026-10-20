@@ -8,6 +8,7 @@ A beginner deep learning project exploring image reconstruction using PyTorch an
 This project uses a convolutional neural network trained on CIFAR-10 images to explore image super-resolution concepts.
 
 The model learns to reconstruct 32 × 32 images from bicubic-upsampled, lower-resolution inputs.
+![Super-resolution demo](images/demo.png)
 
 ## Features
 
